@@ -58,8 +58,8 @@ build: gen-proto gen-swagger gen-http-client gen-mocks
 run: build
 	./bin/$(SERVER_BINARY_NAME) \
         --log-level "debug" \
-		--http-address "localhost:8080" \
-		--grpc-address "localhost:50051" \
+		--http-address "localhost:8082" \
+		--grpc-address "localhost:50052" \
 		--db-driver "postgres" \
 		--db-dsn "postgres://svc_profile:password@localhost:5432/test?sslmode=disable&search_path=auth_db" \
 		--auth-jwt-secret "jwt-key" \

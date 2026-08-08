@@ -7,7 +7,7 @@ mkdir -p api/{proto/tiny-profile-service,rest} \
     configs \
     deployments \
     docs \
-    internal/{app,config,domain,facade/{dto,mapper},repository/postgres,transport/{errs,rest,grpc},usecase} \
+    internal/{app/containers,config,domain,facade/{dto,mapper},repository/postgres,transport/{errs,rest,grpc},usecase} \
     migrations/tiny-profile-service \
     pkg \
     scripts
