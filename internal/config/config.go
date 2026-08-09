@@ -9,6 +9,7 @@ import (
 	"github.com/spf13/viper"
 )
 
+// Config micro-service configuration
 type Config struct {
 	App           *AppConfig                `mapstructure:"app" json:"app,omitempty" yaml:"app,omitempty"`
 	Auth          *conf.AuthConfig          `mapstructure:"auth" json:"auth,omitempty" yaml:"auth,omitempty"`

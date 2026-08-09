@@ -9,7 +9,7 @@ import (
 
 // @title           Profile Service API
 // @version         1.0
-// @description     Сервис аудита
+// @description     User profiles service
 // @termsOfService  Free use
 
 // @contact.name   API Support
