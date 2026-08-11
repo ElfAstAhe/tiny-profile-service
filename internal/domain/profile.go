@@ -70,11 +70,11 @@ func (pr *Profile) ValidateCreate() error {
 		return errs.NewBllValidateError("Profile.ValidateCreate", "user_id must not be empty", nil)
 	}
 
-	if err := validateLang(pr.Lang); err != nil {
+	if err := utils.ValidateLanguage(pr.Lang); err != nil {
 		return errs.NewBllValidateError("Profile.ValidateCreate", "lang validation failed", err)
 	}
 
-	if err := validateTimeZone(pr.TimeZone); err != nil {
+	if err := utils.ValidateTimeZone(pr.TimeZone); err != nil {
 		return errs.NewBllValidateError("Profile.ValidateCreate", "time_zone validation failed", err)
 	}
 
@@ -90,11 +90,11 @@ func (pr *Profile) ValidateChange() error {
 		return errs.NewBllValidateError("Profile.ValidateChange", "user_id must not be empty", nil)
 	}
 
-	if err := validateLang(pr.Lang); err != nil {
+	if err := utils.ValidateLanguage(pr.Lang); err != nil {
 		return errs.NewBllValidateError("Profile.ValidateChange", "lang validation failed", err)
 	}
 
-	if err := validateTimeZone(pr.TimeZone); err != nil {
+	if err := utils.ValidateTimeZone(pr.TimeZone); err != nil {
 		return errs.NewBllValidateError("Profile.ValidateChange", "time_zone validation failed", err)
 	}
 
