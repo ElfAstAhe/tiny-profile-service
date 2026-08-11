@@ -2,7 +2,7 @@
 
 cd ..
 
-mkdir -p api/{proto/tiny-profile-service,rest} \
+mkdir -p api/{proto/tiny-profile-service/v1,rest} \
     cmd/tiny-profile-service \
     configs \
     deployments \

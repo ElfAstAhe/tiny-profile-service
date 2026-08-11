@@ -43,7 +43,8 @@ gen-mocks:
 	mockery
 
 # Сборка проекта с прокидыванием переменных
-build: gen-proto gen-swagger gen-http-client gen-mocks
+#build: gen-proto gen-swagger gen-http-client gen-mocks
+build:
 #build: gen-proto
 	go build -ldflags "-X '$(MODULE_NAME)/internal/config.AppVersion=$(VERSION)' \
 	-X '$(MODULE_NAME)/internal/config.AppBuildTime=$(BUILD_TIME)'" \
