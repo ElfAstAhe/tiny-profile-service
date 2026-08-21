@@ -77,31 +77,31 @@ func setupDB(pg *sql.DB, conf *config.DBConfig) (*PgDB, error) {
 	}, nil
 }
 
-func (pgdb *PgDB) GetDriver() string {
-	return pgdb.conf.Driver
+func (pdb *PgDB) GetDriver() string {
+	return pdb.conf.Driver
 }
 
-func (pgdb *PgDB) GetDB() *sql.DB {
-	return pgdb.db
+func (pdb *PgDB) GetDB() *sql.DB {
+	return pdb.db
 }
 
-func (pgdb *PgDB) GetDSN() string {
-	return pgdb.conf.DSN
+func (pdb *PgDB) GetDSN() string {
+	return pdb.conf.DSN
 }
 
-func (pgdb *PgDB) Close() error {
-	return pgdb.db.Close()
+func (pdb *PgDB) Close() error {
+	return pdb.db.Close()
 }
 
-func (pgdb *PgDB) GetQuerier(ctx context.Context) db.Querier {
+func (pdb *PgDB) GetQuerier(ctx context.Context) db.Querier {
 	if tx := db.GetTx(ctx); tx != nil {
 		return tx
 	}
 
-	return pgdb.db
+	return pdb.db
 }
 
-func (pgdb *PgDB) IsUniqueViolation(err error) bool {
+func (pdb *PgDB) IsUniqueViolation(err error) bool {
 	if pgErr, ok := errors.AsType[*pgconn.PgError](err); ok {
 		return pgErr.Code == "23505" // Код ошибки unique_violation в PostgreSQL
 	}
@@ -109,8 +109,8 @@ func (pgdb *PgDB) IsUniqueViolation(err error) bool {
 	return false
 }
 
-func (pgdb *PgDB) Ping(ctx context.Context) error {
-	err := pgdb.db.PingContext(ctx)
+func (pdb *PgDB) Ping(ctx context.Context) error {
+	err := pdb.db.PingContext(ctx)
 	if err != nil {
 		return errs.NewDalError("Ping", "ping db connection", err)
 	}
