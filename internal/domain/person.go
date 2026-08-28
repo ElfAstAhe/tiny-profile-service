@@ -152,6 +152,7 @@ func (pe *Person) GetInstanceName() string {
 	return spew.Sprintf("LN: %s FN: %s P: %s", pe.LastName, pe.FirstName, pe.Patronymic)
 }
 
+//goland:noinspection DuplicatedCode
 func (pe *Person) HashCode() uint32 {
 	h := fnv.New32a()
 

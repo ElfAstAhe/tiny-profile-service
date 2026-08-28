@@ -18,12 +18,13 @@ select
     updated_at
 from
     persons
+where
+    deleted = false
 order by
     id asc
 offset $2
 limit $1
 `
-
 	sqlPersonFind string = `
 select
     id,
@@ -42,9 +43,9 @@ select
 from
     persons
 where
-    id = $1
+    deleted = false
+and id = $1
 `
-
 	sqlPersonCreate string = `
 insert into Persons(
     id,
@@ -79,7 +80,6 @@ returning
     created_at,
     updated_at
 `
-
 	sqlPersonChange string = `
 update
     persons
@@ -93,8 +93,7 @@ set
     status = $8,
     avatar_url = $9,
     active = $10,
-    deleted = $11,
-    updated_at = $12
+    updated_at = $11
 where
     id = $1
 returning 
@@ -112,7 +111,6 @@ returning
     created_at,
     updated_at
 `
-
 	sqlPersonDelete string = `
 update
     persons
@@ -120,5 +118,26 @@ set
     deleted = true
 where
     id = $1
+`
+	sqlPersonFindByExternalID = `
+select
+    id,
+    external_id,
+    last_name,
+    first_name,
+    patronymic,
+    department,
+    position,
+    status,
+    avatar_url,
+    active,
+    deleted,
+    created_at,
+    updated_at
+from
+    persons
+where
+    deleted = false
+and external_id = $1
 `
 )
