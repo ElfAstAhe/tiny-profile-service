@@ -41,13 +41,15 @@ func NewApplication(opts ...Option) (*Application, error) {
 	err := errors.Join(
 		// app container
 		res.GetOrchestrator().Register(containers.NewAppContainer(res.GetOrchestrator(), res.log)),
+		// tools container
+		res.GetOrchestrator().Register(containers.NewToolsContainer(res.GetOrchestrator(), res.log)),
 		/*
-			// tools container
-			res.GetOrchestrator().Register(containers.NewToolsContainer(res.GetOrchestrator(), res.log)),
 			// client container
 			res.GetOrchestrator().Register(containers.NewClientContainer(res.GetOrchestrator(), res.log)),
-			// postgres container
-			res.GetOrchestrator().Register(containers.NewPgContainer(res.GetOrchestrator(), res.log)),
+		*/
+		// postgres container
+		res.GetOrchestrator().Register(containers.NewPgContainer(res.GetOrchestrator(), res.log)),
+		/*
 			// repository container
 			res.GetOrchestrator().Register(containers.NewRepositoryContainer(res.GetOrchestrator(), res.log)),
 			// use case container

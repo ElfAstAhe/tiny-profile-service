@@ -19,6 +19,7 @@ type Person struct {
 	LastName   string    `db:"last_name"`
 	FirstName  string    `db:"first_name"`
 	Patronymic string    `db:"patronymic"`
+	Birthday   time.Time `db:"birthday"`
 	Department string    `db:"department"`
 	Position   string    `db:"position"`
 	Status     string    `db:"status"`
@@ -41,6 +42,7 @@ func NewPerson(
 	lastName string,
 	firstName string,
 	patronymic string,
+	birthday time.Time,
 	department string,
 	position string,
 	status string,
@@ -54,6 +56,7 @@ func NewPerson(
 		LastName:   lastName,
 		FirstName:  firstName,
 		Patronymic: patronymic,
+		Birthday:   birthday,
 		Department: department,
 		Position:   position,
 		Status:     status,
@@ -161,6 +164,7 @@ func (pe *Person) HashCode() uint32 {
 	h.Write([]byte(pe.LastName))
 	h.Write([]byte(pe.FirstName))
 	h.Write([]byte(pe.Patronymic))
+	h.Write([]byte(pe.Birthday.Format(time.RFC3339)))
 	h.Write([]byte(pe.Department))
 	h.Write([]byte(pe.Position))
 	h.Write([]byte(pe.Status))
@@ -187,6 +191,7 @@ func (pe *Person) ToAuditMap() map[string]*auditdomain.AuditField {
 		"last_name":   auditdomain.NewAuditField(pe.LastName, "Фамилия"),
 		"first_name":  auditdomain.NewAuditField(pe.FirstName, "Имя"),
 		"patronymic":  auditdomain.NewAuditField(pe.Patronymic, "Отчество"),
+		"birthday":    auditdomain.NewAuditField(pe.Birthday.Format(time.RFC3339), "ДР"),
 		"department":  auditdomain.NewAuditField(pe.Department, "Департамент"),
 		"position":    auditdomain.NewAuditField(pe.Position, "Позиция"),
 		"status":      auditdomain.NewAuditField(pe.Status, "Статус"),

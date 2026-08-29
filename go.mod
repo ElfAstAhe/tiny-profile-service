@@ -3,7 +3,7 @@ module github.com/ElfAstAhe/tiny-profile-service
 go 1.26.0
 
 require (
-	github.com/ElfAstAhe/go-service-template v0.0.87
+	github.com/ElfAstAhe/go-service-template v0.0.89
 	github.com/ElfAstAhe/tiny-audit-service v0.0.25
 	github.com/XSAM/otelsql v0.43.0
 	github.com/davecgh/go-spew v1.1.1
@@ -37,7 +37,7 @@ require (
 	github.com/prometheus/client_golang v1.24.1 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.70.1 // indirect
-	github.com/prometheus/procfs v0.21.1 // indirect
+	github.com/prometheus/procfs v0.22.0 // indirect
 	github.com/sagikazarmark/locafero v0.12.0 // indirect
 	github.com/sethvargo/go-retry v0.4.0 // indirect
 	github.com/spf13/afero v1.15.0 // indirect
