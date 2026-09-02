@@ -3,12 +3,14 @@ module github.com/ElfAstAhe/tiny-profile-service
 go 1.26.0
 
 require (
-	github.com/ElfAstAhe/go-service-template v0.0.89
-	github.com/ElfAstAhe/tiny-audit-service v0.0.25
+	github.com/ElfAstAhe/go-service-template v0.0.90
+	github.com/ElfAstAhe/tiny-audit-service v0.0.26
 	github.com/XSAM/otelsql v0.43.0
 	github.com/davecgh/go-spew v1.1.1
+	github.com/golang-jwt/jwt/v5 v5.3.1
 	github.com/google/uuid v1.6.0
 	github.com/jackc/pgx/v5 v5.10.0
+	github.com/pressly/goose/v3 v3.27.3
 	github.com/spf13/pflag v1.0.10
 	github.com/spf13/viper v1.21.0
 	github.com/xo/dburl v0.24.2
@@ -16,7 +18,7 @@ require (
 )
 
 require (
-	github.com/ElfAstAhe/tiny-auth-service v0.0.19 // indirect
+	github.com/ElfAstAhe/tiny-auth-service v0.0.20 // indirect
 	github.com/andybalholm/brotli v1.2.3 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
@@ -25,7 +27,6 @@ require (
 	github.com/go-logr/logr v1.4.4 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-viper/mapstructure/v2 v2.5.0 // indirect
-	github.com/golang-jwt/jwt/v5 v5.3.1 // indirect
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.30.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20240606120523-5a60cdf6a761 // indirect
@@ -33,7 +34,6 @@ require (
 	github.com/mfridman/interpolate v0.0.2 // indirect
 	github.com/munnerz/goautoneg v0.0.0-20191010083416-a7dc8b61c822 // indirect
 	github.com/pelletier/go-toml/v2 v2.4.3 // indirect
-	github.com/pressly/goose/v3 v3.27.3 // indirect
 	github.com/prometheus/client_golang v1.24.1 // indirect
 	github.com/prometheus/client_model v0.6.2 // indirect
 	github.com/prometheus/common v0.70.1 // indirect

@@ -14,6 +14,8 @@ select
     updated_at
 from
     profiles
+where
+    deleted = false
 order by
     user_id asc,
     id asc
@@ -34,7 +36,8 @@ select
 from
     profiles
 where
-    id = $1
+    deleted = false
+and id = $1
 and person_id = $2
 `
 	sqlProfileCreate string = `
@@ -68,7 +71,8 @@ set
     time_zone = $2,
     lang = $3,
     active = $4,
-    updated = $5
+    deleted = $5,
+    updated = $6
 where
     id = $1
 returning
@@ -106,7 +110,7 @@ from
 where
     user_id = $1
 `
-	sqlProfileFindByPersonID string = `
+	sqlProfileListAllByPersonID string = `
 select
     id,
     user_id,
@@ -122,5 +126,37 @@ from
 where
     deleted = false
 and person_id = $1
+order by
+    user_id asc,
+    id asc
+`
+	sqlProfileListAllByPersons string = `
+select
+    id,
+    user_id,
+    person_id,
+    time_zone,
+    lang,
+    active,
+    deleted,
+    created_at,
+    updated_at
+from
+    profiles
+where
+    deleted = false
+and person_id = any($1)
+order by
+    person_id asc,
+    user_id asc,
+    id asc
+`
+	sqlProfileDeleteAllByPersonID string = `
+update
+    profiles
+set
+    deleted = true
+where
+    person_id = $1
 `
 )

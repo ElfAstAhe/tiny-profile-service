@@ -9,19 +9,19 @@ import (
 	"github.com/ElfAstAhe/tiny-profile-service/internal/domain"
 )
 
-type ProfileRepository struct {
+type ProfilePgRepository struct {
 	*repository.BaseCRUDRepository[*domain.Profile, string]
 }
 
-var _ libdomain.CRUDRepository[*domain.Profile, string] = (*ProfileRepository)(nil)
-var _ domain.ProfileRepository = (*ProfileRepository)(nil)
+var _ libdomain.CRUDRepository[*domain.Profile, string] = (*ProfilePgRepository)(nil)
+var _ domain.ProfileRepository = (*ProfilePgRepository)(nil)
 
 func NewProfileRepository(
 	executor *db.Executor,
 	decipher *db.ErrorDecipher,
-) (*ProfileRepository, error) {
+) (*ProfilePgRepository, error) {
 	// new instance
-	res := &ProfileRepository{}
+	res := &ProfilePgRepository{}
 	// sql builders
 	// callbacks
 	// base CRUD
@@ -29,12 +29,17 @@ func NewProfileRepository(
 	return res, nil
 }
 
-func (p ProfileRepository) FindByUserID(ctx context.Context, userID string) (*domain.Profile, error) {
+func (p *ProfilePgRepository) FindByUserID(ctx context.Context, userID string) (*domain.Profile, error) {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (p ProfileRepository) ListAllByPersonID(ctx context.Context, personID string) ([]*domain.Profile, error) {
+func (p *ProfilePgRepository) ListAllByPersonID(ctx context.Context, personID string) ([]*domain.Profile, error) {
+	//TODO implement me
+	panic("implement me")
+}
+
+func (p *ProfilePgRepository) ListAllByPersons(ctx context.Context, personIDs []string) (map[string][]*domain.Profile, error) {
 	//TODO implement me
 	panic("implement me")
 }

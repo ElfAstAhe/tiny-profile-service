@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/ElfAstAhe/go-service-template/pkg/domain"
+	libdomain "github.com/ElfAstAhe/go-service-template/pkg/domain"
 	"github.com/ElfAstAhe/go-service-template/pkg/errs"
 	"github.com/ElfAstAhe/go-service-template/pkg/utils"
 	auditdomain "github.com/ElfAstAhe/tiny-audit-service/pkg/domain"
@@ -31,8 +31,8 @@ type Person struct {
 	Profiles   []*Profile
 }
 
-var _ domain.Entity[string] = (*Person)(nil)
-var _ domain.SoftDeleteEntity[bool] = (*Person)(nil)
+var _ libdomain.Entity[string] = (*Person)(nil)
+var _ libdomain.SoftDeleteEntity[bool] = (*Person)(nil)
 var _ auditdomain.Auditable = (*Person)(nil)
 var _ auditrepository.AuditableEntity[string] = (*Person)(nil)
 
@@ -88,7 +88,7 @@ func (pe *Person) IsExists() bool {
 }
 
 func (pe *Person) BeforeCreate() error {
-	if err := defaultBeforeCreate(pe); err != nil {
+	if err := libdomain.AssignUUIDv7(pe); err != nil {
 		return errs.NewBllError("Person.BeforeCreate", "default before create failed", err)
 	}
 

@@ -8,6 +8,7 @@ select
     last_name,
     first_name,
     patronymic,
+    birthday,
     department,
     position,
     status,
@@ -32,6 +33,7 @@ select
     last_name,
     first_name,
     patronymic,
+    birthday,
     department,
     position,
     status,
@@ -53,6 +55,7 @@ insert into Persons(
     last_name,
     first_name,
     patronymic,
+	birthday,
     department,
     position,
     status,
@@ -63,7 +66,7 @@ insert into Persons(
     updated_at
 )
 values(
-    $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13
+    $1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13,$14
 )
 returning
     id,
@@ -71,6 +74,7 @@ returning
     last_name,
     first_name,
     patronymic,
+    birthday,
     department,
     position,
     status,
@@ -88,12 +92,13 @@ set
     last_name = $3,
     first_name = $4,
     patronymic = $5,
-    department = $6,
-    position = $7,
-    status = $8,
-    avatar_url = $9,
-    active = $10,
-    updated_at = $11
+    birthday = $6,
+    department = $7,
+    position = $8,
+    status = $9,
+    avatar_url = $10,
+    active = $11,
+    updated_at = $12
 where
     id = $1
 returning 
@@ -102,6 +107,7 @@ returning
     last_name,
     first_name,
     patronymic,
+    birthday,
     department,
     position,
     status,
@@ -126,6 +132,7 @@ select
     last_name,
     first_name,
     patronymic,
+    birthday,
     department,
     position,
     status,

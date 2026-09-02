@@ -19,7 +19,7 @@ func up0002(ctx context.Context, db *sql.DB) error {
 		return err
 	}
 
-	return createIndexProfileByPerson(ctx, db)
+	return createIndexProfileByPersons(ctx, db)
 }
 
 func createTableProfiles(ctx context.Context, db *sql.DB) error {
@@ -49,10 +49,10 @@ func createIndexProfilesByUserID(ctx context.Context, db *sql.DB) error {
 	return nil
 }
 
-func createIndexProfileByPerson(ctx context.Context, db *sql.DB) error {
-	_, err := db.ExecContext(ctx, sqlCreateIndexProfilesByPersonID)
+func createIndexProfileByPersons(ctx context.Context, db *sql.DB) error {
+	_, err := db.ExecContext(ctx, sqlCreateIndexProfilesByPersons)
 	if err != nil {
-		return errs.NewDBMigrationError("create index profiles by person id failed", err)
+		return errs.NewDBMigrationError("create index profiles by persons failed", err)
 	}
 
 	return nil
@@ -65,7 +65,7 @@ func down0002(ctx context.Context, db *sql.DB) error {
 	if err := dropIndexProfilesByUserID(ctx, db); err != nil {
 		return err
 	}
-	if err := dropIndexProfilesByPersonID(ctx, db); err != nil {
+	if err := dropIndexProfilesByPersons(ctx, db); err != nil {
 		return err
 	}
 
@@ -99,10 +99,10 @@ func dropIndexProfilesByUserID(ctx context.Context, db *sql.DB) error {
 	return nil
 }
 
-func dropIndexProfilesByPersonID(ctx context.Context, db *sql.DB) error {
-	_, err := db.ExecContext(ctx, sqlDropIndexProfilesByPersonID)
+func dropIndexProfilesByPersons(ctx context.Context, db *sql.DB) error {
+	_, err := db.ExecContext(ctx, sqlDropIndexProfilesByPersons)
 	if err != nil {
-		return errs.NewDBMigrationError("drop index profiles by person id failed", err)
+		return errs.NewDBMigrationError("drop index profiles by persons failed", err)
 	}
 
 	return nil

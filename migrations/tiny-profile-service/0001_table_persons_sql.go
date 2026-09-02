@@ -24,13 +24,13 @@ create table if not exists persons (
 drop table if exists persons cascade
 `
 	sqlCreateIndexPersonsByID string = `
-create index if not exists idx_persons_id on persons(deleted desc, id asc)
+create index if not exists idx_persons_id on persons(deleted asc, id asc)
 `
 	sqlDropIndexPersonsByID string = `
 drop index if exists idx_persons_id
 `
 	sqlCreateIndexPersonsByExternalID string = `
-create index if not exists idx_persons_external_id on persons(deleted desc, external_id asc)
+create index if not exists idx_persons_external_id on persons(deleted asc, external_id asc)
 `
 	sqlDropIndexPersonsByExternalID string = `
 drop index if exists idx_persons_external_id

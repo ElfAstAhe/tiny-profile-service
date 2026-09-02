@@ -1,9 +1,15 @@
 github.com/ElfAstAhe/go-service-template v0.0.89 h1:ipxmDZSuB6QoQHfvibMZ7UipJqUTQwTRqa4K9xtJQjc=
 github.com/ElfAstAhe/go-service-template v0.0.89/go.mod h1:0mnXgifxxN53QjzBvHXjC5rWerJLfF5j/Gv5c8xvffE=
+github.com/ElfAstAhe/go-service-template v0.0.90 h1:AJLafDBmsZr3w3Jp50MDkXZcM01tSdL9Q82wOo5Fah8=
+github.com/ElfAstAhe/go-service-template v0.0.90/go.mod h1:0mnXgifxxN53QjzBvHXjC5rWerJLfF5j/Gv5c8xvffE=
 github.com/ElfAstAhe/tiny-audit-service v0.0.25 h1:r7wWTAgzKSwUZbV5gUortTV4ms8+JCSG6Z5XmjzerJM=
 github.com/ElfAstAhe/tiny-audit-service v0.0.25/go.mod h1:y3w02CsqMjklnrYT7gAFIJsW7qJr01pZVFLf3Ta3IVI=
+github.com/ElfAstAhe/tiny-audit-service v0.0.26 h1:5TBiNmybBZXf0FsjbVMaiKnHmdh6/NaNkC3TicilS4E=
+github.com/ElfAstAhe/tiny-audit-service v0.0.26/go.mod h1:2EbV+xlzc4AZvfAp0FDQ2Nm+UEIbTmoawYwH/RZgV70=
 github.com/ElfAstAhe/tiny-auth-service v0.0.19 h1:sGhKJqC6bm2FvBzbkwAvRFkTASuArnuUbk59lMxvHL4=
 github.com/ElfAstAhe/tiny-auth-service v0.0.19/go.mod h1:DlQSgN4+WE+LzEuj28Zyg4fQnBOre0glJj9MBADicI0=
+github.com/ElfAstAhe/tiny-auth-service v0.0.20 h1:qg1i/tt+Cd+97rxbVJKxvxKdmq943ZrC94my4SS7SGY=
+github.com/ElfAstAhe/tiny-auth-service v0.0.20/go.mod h1:DA9I5POfap2QVj133X2jdLo+u85sfNFb7VOmKEsI5CU=
 github.com/XSAM/otelsql v0.43.0 h1:ZIhXqRoMhILXQwBQoq/Dl6Taap/KEFQXZrWjYV1L8X8=
 github.com/XSAM/otelsql v0.43.0/go.mod h1:DJBGBvbtwf1OCBYRTjpRFxOqi6ONpdfb+htr4ncRWuw=
 github.com/andybalholm/brotli v1.2.3 h1:8H1qwOkl2LPfjf3YezB90JnCliZb6SInJ/OJkEbA5NQ=

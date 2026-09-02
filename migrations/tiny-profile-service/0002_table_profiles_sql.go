@@ -17,30 +17,26 @@ create table if not exists profiles (
     constraint profiles_uk unique (user_id)
 )
 `
-
 	sqlDropTableProfiles string = `
 drop table if exists profiles
 `
-
 	sqlCreateIndexProfilesByID string = `
-create index if not exists idx_profiles_id on profiles(deleted desc, id asc)
+create index if not exists idx_profiles_id on profiles(deleted asc, id asc)
 `
-
 	sqlDropIndexProfilesByID string = `
 drop index if exists idx_profiles_id
 `
-
 	sqlCreateIndexProfilesByUserID string = `
-create index if not exists idx_profiles_user_id on profiles(deleted desc, user_id asc)
+create index if not exists idx_profiles_user_id on profiles(deleted asc, user_id asc)
 `
 
 	sqlDropIndexProfilesByUserID string = `
 drop index if exists idx_profiles_user_id
 `
-	sqlCreateIndexProfilesByPersonID string = `
-create index if not exists idx_profiles_person on profiles(deleted desc, person_id asc)
+	sqlCreateIndexProfilesByPersons string = `
+create index if not exists idx_profiles_persons on profiles(deleted asc, person_id asc, user_id asc, id asc)
 `
-	sqlDropIndexProfilesByPersonID string = `
-drop index if exists idx_profiles_person
+	sqlDropIndexProfilesByPersons string = `
+drop index if exists idx_profiles_persons
 `
 )
