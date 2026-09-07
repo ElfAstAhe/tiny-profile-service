@@ -1,6 +1,23 @@
 package postgres
 
 const (
+	sqlProfileFind string = `
+select
+    id,
+    user_id,
+    person_id,
+    time_zone,
+    lang,
+    active,
+    deleted,
+    created_at,
+    updated_at
+from
+    profiles
+where
+    id = $1
+and person_id = $2
+`
 	sqlProfileList string = `
 select
     id,
@@ -16,13 +33,14 @@ from
     profiles
 where
     deleted = false
+and person_id = $1
 order by
     user_id asc,
     id asc
 offset $2
-limit $1
+limit $2
 `
-	sqlProfileFind string = `
+	sqlProfileListAll string = `
 select
     id,
     user_id,
@@ -37,8 +55,30 @@ from
     profiles
 where
     deleted = false
-and id = $1
-and person_id = $2
+and person_id = $1
+order by
+    user_id asc,
+    id asc
+`
+	sqlProfileListAllByOwners string = `
+select
+    id,
+    user_id,
+    person_id,
+    time_zone,
+    lang,
+    active,
+    deleted,
+    created_at,
+    updated_at
+from
+    profiles
+where
+    person_id = any($1)
+order by
+    person_id asc,
+    user_id asc,
+    id asc
 `
 	sqlProfileCreate string = `
 insert into profiles (
@@ -52,7 +92,7 @@ insert into profiles (
     created_at,
     updated_at
 )
-values($1, $2, $3, $4, $5, $6, false, $7, $8)
+values($1, $2, $3, $4, $5, $6, $7, $8, $9)
 returning
     id,
     user_id,
@@ -86,11 +126,35 @@ returning
     created_at,
     updated_at
 `
+	sqlProfileDeleteAll string = `
+update
+    profiles
+set
+    deleted = true
+where
+    person_id = $1
+`
 	sqlProfileDelete string = `
 update
     profiles
 set
     deleted = true
+where
+    id = $1
+`
+	sqlProfileFindByID string = `
+select
+    id,
+    user_id,
+    person_id,
+    time_zone,
+    lang,
+    active,
+    deleted,
+    created_at,
+    updated_at
+from
+    profiles
 where
     id = $1
 `
@@ -109,54 +173,5 @@ from
     profiles
 where
     user_id = $1
-`
-	sqlProfileListAllByPersonID string = `
-select
-    id,
-    user_id,
-    person_id,
-    time_zone,
-    lang,
-    active,
-    deleted,
-    created_at,
-    updated_at
-from
-    profiles
-where
-    deleted = false
-and person_id = $1
-order by
-    user_id asc,
-    id asc
-`
-	sqlProfileListAllByPersons string = `
-select
-    id,
-    user_id,
-    person_id,
-    time_zone,
-    lang,
-    active,
-    deleted,
-    created_at,
-    updated_at
-from
-    profiles
-where
-    deleted = false
-and person_id = any($1)
-order by
-    person_id asc,
-    user_id asc,
-    id asc
-`
-	sqlProfileDeleteAllByPersonID string = `
-update
-    profiles
-set
-    deleted = true
-where
-    person_id = $1
 `
 )

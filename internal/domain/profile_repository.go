@@ -7,10 +7,8 @@ import (
 )
 
 type ProfileRepository interface {
-	domain.CRUDRepository[*Profile, string]
+	domain.OwnedRepository[*Profile, string, string]
 
+	FindByID(ctx context.Context, id string) (*Profile, error)
 	FindByUserID(ctx context.Context, userID string) (*Profile, error)
-
-	ListAllByPersonID(ctx context.Context, personID string) ([]*Profile, error)
-	ListAllByPersons(ctx context.Context, personIDs []string) (map[string][]*Profile, error)
 }

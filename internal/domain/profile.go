@@ -30,6 +30,37 @@ var _ libdomain.SoftDeleteEntity[bool] = (*Profile)(nil)
 var _ auditdomain.Auditable = (*Profile)(nil)
 var _ auditrepository.AuditableEntity[string] = (*Profile)(nil)
 
+func NewProfile(
+	id string,
+	userID string,
+	personID string,
+	timeZone string,
+	lang string,
+	active bool,
+	deleted bool,
+	createdAt time.Time,
+	updatedAt time.Time,
+) *Profile {
+	return &Profile{
+		ID:        id,
+		UserID:    userID,
+		PersonID:  personID,
+		TimeZone:  timeZone,
+		Lang:      lang,
+		Active:    active,
+		Deleted:   deleted,
+		CreatedAt: createdAt,
+		UpdatedAt: updatedAt,
+	}
+}
+
+func NewEmptyProfile() *Profile {
+	return &Profile{
+		Active:  true,
+		Deleted: false,
+	}
+}
+
 func (pr *Profile) GetID() string {
 	return pr.ID
 }

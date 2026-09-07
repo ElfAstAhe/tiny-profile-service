@@ -81,7 +81,7 @@ func (p *PersonPgRepository) Find(ctx context.Context, id string) (*domain.Perso
 	if err != nil {
 		return nil, err
 	}
-	profiles, err := p.profileRepo.ListAllByPersonID(ctx, id)
+	profiles, err := p.profileRepo.ListAll(ctx, id)
 	if err != nil {
 		return nil, err
 	}
@@ -98,7 +98,7 @@ func (p *PersonPgRepository) FindByExternalID(ctx context.Context, externalID st
 	if err != nil {
 		return nil, err
 	}
-	profiles, err := p.profileRepo.ListAllByPersonID(ctx, externalID)
+	profiles, err := p.profileRepo.ListAll(ctx, externalID)
 	if err != nil {
 		return nil, err
 	}
@@ -112,7 +112,7 @@ func (p *PersonPgRepository) List(ctx context.Context, limit, offset int) ([]*do
 	if err != nil {
 		return nil, err
 	}
-	allProfiles, err := p.profileRepo.ListAllByPersons(ctx, libdomain.EntitiesToIDList(res))
+	allProfiles, err := p.profileRepo.ListAllByOwners(ctx, libdomain.EntitiesToIDList(res)...)
 	if err != nil {
 		return nil, err
 	}
