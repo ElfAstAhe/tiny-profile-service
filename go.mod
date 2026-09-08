@@ -3,7 +3,7 @@ module github.com/ElfAstAhe/tiny-profile-service
 go 1.26.0
 
 require (
-	github.com/ElfAstAhe/go-service-template v0.0.92
+	github.com/ElfAstAhe/go-service-template v0.0.93
 	github.com/ElfAstAhe/tiny-audit-service v0.0.26
 	github.com/XSAM/otelsql v0.44.0
 	github.com/davecgh/go-spew v1.1.1
@@ -18,7 +18,7 @@ require (
 )
 
 require (
-	github.com/ElfAstAhe/tiny-auth-service v0.0.20 // indirect
+	github.com/ElfAstAhe/tiny-auth-service v0.0.21 // indirect
 	github.com/andybalholm/brotli v1.2.3 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v5 v5.0.3 // indirect
