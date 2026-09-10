@@ -13,15 +13,12 @@ require-template-schema-exists: true
 template: testify
 template-schema: '{{.Template}}.schema.json'
 packages:
-  github.com/ElfAstAhe/tiny-auth-service/pkg/transport/auth:
+  github.com/ElfAstAhe/tiny-profile-service/internal/domain:
     config:
       all: true
-  github.com/ElfAstAhe/tiny-auth-service/internal/domain:
+  github.com/ElfAstAhe/tiny-profile-service/internal/usecase:
     config:
       all: true
-  github.com/ElfAstAhe/tiny-auth-service/internal/usecase:
-    config:
-      all: true
-  github.com/ElfAstAhe/tiny-auth-service/internal/facade:
+  github.com/ElfAstAhe/tiny-profile-service/internal/facade:
     config:
       all: true
