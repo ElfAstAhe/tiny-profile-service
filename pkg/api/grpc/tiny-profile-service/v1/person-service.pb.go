@@ -9,6 +9,7 @@ package tiny_profile_service
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
+	emptypb "google.golang.org/protobuf/types/known/emptypb"
 	reflect "reflect"
 	unsafe "unsafe"
 )
@@ -20,19 +21,663 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+type PersonFindRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *PersonFindRequest) Reset() {
+	*x = PersonFindRequest{}
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[0]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PersonFindRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PersonFindRequest) ProtoMessage() {}
+
+func (x *PersonFindRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[0]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *PersonFindRequest) GetId() string {
+	if x != nil {
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *PersonFindRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *PersonFindRequest) HasId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *PersonFindRequest) ClearId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Id = nil
+}
+
+type PersonFindRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Id *string
+}
+
+func (b0 PersonFindRequest_builder) Build() *PersonFindRequest {
+	m0 := &PersonFindRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Id != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_Id = b.Id
+	}
+	return m0
+}
+
+type PersonFindByExternalIDRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_ExternalId  *string                `protobuf:"bytes,1,opt,name=external_id,json=externalId"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *PersonFindByExternalIDRequest) Reset() {
+	*x = PersonFindByExternalIDRequest{}
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PersonFindByExternalIDRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PersonFindByExternalIDRequest) ProtoMessage() {}
+
+func (x *PersonFindByExternalIDRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *PersonFindByExternalIDRequest) GetExternalId() string {
+	if x != nil {
+		if x.xxx_hidden_ExternalId != nil {
+			return *x.xxx_hidden_ExternalId
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *PersonFindByExternalIDRequest) SetExternalId(v string) {
+	x.xxx_hidden_ExternalId = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *PersonFindByExternalIDRequest) HasExternalId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *PersonFindByExternalIDRequest) ClearExternalId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_ExternalId = nil
+}
+
+type PersonFindByExternalIDRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	ExternalId *string
+}
+
+func (b0 PersonFindByExternalIDRequest_builder) Build() *PersonFindByExternalIDRequest {
+	m0 := &PersonFindByExternalIDRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.ExternalId != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_ExternalId = b.ExternalId
+	}
+	return m0
+}
+
+type PersonListRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Offset      uint32                 `protobuf:"varint,1,opt,name=offset"`
+	xxx_hidden_Limit       uint32                 `protobuf:"varint,2,opt,name=limit"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *PersonListRequest) Reset() {
+	*x = PersonListRequest{}
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PersonListRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PersonListRequest) ProtoMessage() {}
+
+func (x *PersonListRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *PersonListRequest) GetOffset() uint32 {
+	if x != nil {
+		return x.xxx_hidden_Offset
+	}
+	return 0
+}
+
+func (x *PersonListRequest) GetLimit() uint32 {
+	if x != nil {
+		return x.xxx_hidden_Limit
+	}
+	return 0
+}
+
+func (x *PersonListRequest) SetOffset(v uint32) {
+	x.xxx_hidden_Offset = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 2)
+}
+
+func (x *PersonListRequest) SetLimit(v uint32) {
+	x.xxx_hidden_Limit = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 2)
+}
+
+func (x *PersonListRequest) HasOffset() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *PersonListRequest) HasLimit() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *PersonListRequest) ClearOffset() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Offset = 0
+}
+
+func (x *PersonListRequest) ClearLimit() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_Limit = 0
+}
+
+type PersonListRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Offset *uint32
+	Limit  *uint32
+}
+
+func (b0 PersonListRequest_builder) Build() *PersonListRequest {
+	m0 := &PersonListRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Offset != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 2)
+		x.xxx_hidden_Offset = *b.Offset
+	}
+	if b.Limit != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 2)
+		x.xxx_hidden_Limit = *b.Limit
+	}
+	return m0
+}
+
+type PersonSaveRequest struct {
+	state                protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Instances *Person                `protobuf:"bytes,1,opt,name=instances"`
+	unknownFields        protoimpl.UnknownFields
+	sizeCache            protoimpl.SizeCache
+}
+
+func (x *PersonSaveRequest) Reset() {
+	*x = PersonSaveRequest{}
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PersonSaveRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PersonSaveRequest) ProtoMessage() {}
+
+func (x *PersonSaveRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *PersonSaveRequest) GetInstances() *Person {
+	if x != nil {
+		return x.xxx_hidden_Instances
+	}
+	return nil
+}
+
+func (x *PersonSaveRequest) SetInstances(v *Person) {
+	x.xxx_hidden_Instances = v
+}
+
+func (x *PersonSaveRequest) HasInstances() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Instances != nil
+}
+
+func (x *PersonSaveRequest) ClearInstances() {
+	x.xxx_hidden_Instances = nil
+}
+
+type PersonSaveRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Instances *Person
+}
+
+func (b0 PersonSaveRequest_builder) Build() *PersonSaveRequest {
+	m0 := &PersonSaveRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Instances = b.Instances
+	return m0
+}
+
+type PersonDeleteRequest struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Id          *string                `protobuf:"bytes,1,opt,name=id"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *PersonDeleteRequest) Reset() {
+	*x = PersonDeleteRequest{}
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PersonDeleteRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PersonDeleteRequest) ProtoMessage() {}
+
+func (x *PersonDeleteRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *PersonDeleteRequest) GetId() string {
+	if x != nil {
+		if x.xxx_hidden_Id != nil {
+			return *x.xxx_hidden_Id
+		}
+		return ""
+	}
+	return ""
+}
+
+func (x *PersonDeleteRequest) SetId(v string) {
+	x.xxx_hidden_Id = &v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 1)
+}
+
+func (x *PersonDeleteRequest) HasId() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *PersonDeleteRequest) ClearId() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Id = nil
+}
+
+type PersonDeleteRequest_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Id *string
+}
+
+func (b0 PersonDeleteRequest_builder) Build() *PersonDeleteRequest {
+	m0 := &PersonDeleteRequest{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Id != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 1)
+		x.xxx_hidden_Id = b.Id
+	}
+	return m0
+}
+
+type PersonInstanceResponse struct {
+	state             protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Person *Person                `protobuf:"bytes,1,opt,name=person"`
+	unknownFields     protoimpl.UnknownFields
+	sizeCache         protoimpl.SizeCache
+}
+
+func (x *PersonInstanceResponse) Reset() {
+	*x = PersonInstanceResponse{}
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[5]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PersonInstanceResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PersonInstanceResponse) ProtoMessage() {}
+
+func (x *PersonInstanceResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[5]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *PersonInstanceResponse) GetPerson() *Person {
+	if x != nil {
+		return x.xxx_hidden_Person
+	}
+	return nil
+}
+
+func (x *PersonInstanceResponse) SetPerson(v *Person) {
+	x.xxx_hidden_Person = v
+}
+
+func (x *PersonInstanceResponse) HasPerson() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Person != nil
+}
+
+func (x *PersonInstanceResponse) ClearPerson() {
+	x.xxx_hidden_Person = nil
+}
+
+type PersonInstanceResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Person *Person
+}
+
+func (b0 PersonInstanceResponse_builder) Build() *PersonInstanceResponse {
+	m0 := &PersonInstanceResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Person = b.Person
+	return m0
+}
+
+type PersonInstancesResponse struct {
+	state                  protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Offset      uint32                 `protobuf:"varint,1,opt,name=offset"`
+	xxx_hidden_Limit       uint32                 `protobuf:"varint,2,opt,name=limit"`
+	xxx_hidden_Instances   *[]*Person             `protobuf:"bytes,3,rep,name=instances"`
+	XXX_raceDetectHookData protoimpl.RaceDetectHookData
+	XXX_presence           [1]uint32
+	unknownFields          protoimpl.UnknownFields
+	sizeCache              protoimpl.SizeCache
+}
+
+func (x *PersonInstancesResponse) Reset() {
+	*x = PersonInstancesResponse{}
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[6]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PersonInstancesResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PersonInstancesResponse) ProtoMessage() {}
+
+func (x *PersonInstancesResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_tiny_profile_service_v1_person_service_proto_msgTypes[6]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *PersonInstancesResponse) GetOffset() uint32 {
+	if x != nil {
+		return x.xxx_hidden_Offset
+	}
+	return 0
+}
+
+func (x *PersonInstancesResponse) GetLimit() uint32 {
+	if x != nil {
+		return x.xxx_hidden_Limit
+	}
+	return 0
+}
+
+func (x *PersonInstancesResponse) GetInstances() []*Person {
+	if x != nil {
+		if x.xxx_hidden_Instances != nil {
+			return *x.xxx_hidden_Instances
+		}
+	}
+	return nil
+}
+
+func (x *PersonInstancesResponse) SetOffset(v uint32) {
+	x.xxx_hidden_Offset = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 0, 3)
+}
+
+func (x *PersonInstancesResponse) SetLimit(v uint32) {
+	x.xxx_hidden_Limit = v
+	protoimpl.X.SetPresent(&(x.XXX_presence[0]), 1, 3)
+}
+
+func (x *PersonInstancesResponse) SetInstances(v []*Person) {
+	x.xxx_hidden_Instances = &v
+}
+
+func (x *PersonInstancesResponse) HasOffset() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 0)
+}
+
+func (x *PersonInstancesResponse) HasLimit() bool {
+	if x == nil {
+		return false
+	}
+	return protoimpl.X.Present(&(x.XXX_presence[0]), 1)
+}
+
+func (x *PersonInstancesResponse) ClearOffset() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 0)
+	x.xxx_hidden_Offset = 0
+}
+
+func (x *PersonInstancesResponse) ClearLimit() {
+	protoimpl.X.ClearPresent(&(x.XXX_presence[0]), 1)
+	x.xxx_hidden_Limit = 0
+}
+
+type PersonInstancesResponse_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Offset    *uint32
+	Limit     *uint32
+	Instances []*Person
+}
+
+func (b0 PersonInstancesResponse_builder) Build() *PersonInstancesResponse {
+	m0 := &PersonInstancesResponse{}
+	b, x := &b0, m0
+	_, _ = b, x
+	if b.Offset != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 0, 3)
+		x.xxx_hidden_Offset = *b.Offset
+	}
+	if b.Limit != nil {
+		protoimpl.X.SetPresentNonAtomic(&(x.XXX_presence[0]), 1, 3)
+		x.xxx_hidden_Limit = *b.Limit
+	}
+	x.xxx_hidden_Instances = &b.Instances
+	return m0
+}
+
 var File_tiny_profile_service_v1_person_service_proto protoreflect.FileDescriptor
 
 const file_tiny_profile_service_v1_person_service_proto_rawDesc = "" +
 	"\n" +
-	",tiny-profile-service/v1/person-service.proto\x12\x0fprofile.serviceB0Z.tiny-profile-service/grpc/tiny-profile-serviceb\beditionsp\xe8\a"
+	",tiny-profile-service/v1/person-service.proto\x12\x0fprofile.service\x1a\x1bgoogle/protobuf/empty.proto\x1a&tiny-profile-service/v1/messages.proto\"#\n" +
+	"\x11PersonFindRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"@\n" +
+	"\x1dPersonFindByExternalIDRequest\x12\x1f\n" +
+	"\vexternal_id\x18\x01 \x01(\tR\n" +
+	"externalId\"A\n" +
+	"\x11PersonListRequest\x12\x16\n" +
+	"\x06offset\x18\x01 \x01(\rR\x06offset\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\rR\x05limit\"J\n" +
+	"\x11PersonSaveRequest\x125\n" +
+	"\tinstances\x18\x01 \x01(\v2\x17.profile.service.PersonR\tinstances\"%\n" +
+	"\x13PersonDeleteRequest\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\tR\x02id\"I\n" +
+	"\x16PersonInstanceResponse\x12/\n" +
+	"\x06person\x18\x01 \x01(\v2\x17.profile.service.PersonR\x06person\"~\n" +
+	"\x17PersonInstancesResponse\x12\x16\n" +
+	"\x06offset\x18\x01 \x01(\rR\x06offset\x12\x14\n" +
+	"\x05limit\x18\x02 \x01(\rR\x05limit\x125\n" +
+	"\tinstances\x18\x03 \x03(\v2\x17.profile.service.PersonR\tinstances2\xc4\x03\n" +
+	"\rPersonService\x12S\n" +
+	"\x04Find\x12\".profile.service.PersonFindRequest\x1a'.profile.service.PersonInstanceResponse\x12k\n" +
+	"\x10FindByExternalID\x12..profile.service.PersonFindByExternalIDRequest\x1a'.profile.service.PersonInstanceResponse\x12T\n" +
+	"\x04List\x12\".profile.service.PersonListRequest\x1a(.profile.service.PersonInstancesResponse\x12S\n" +
+	"\x04Save\x12\".profile.service.PersonSaveRequest\x1a'.profile.service.PersonInstanceResponse\x12F\n" +
+	"\x06Delete\x12$.profile.service.PersonDeleteRequest\x1a\x16.google.protobuf.EmptyB0Z.tiny-profile-service/grpc/tiny-profile-serviceb\beditionsp\xe8\a"
 
-var file_tiny_profile_service_v1_person_service_proto_goTypes = []any{}
+var file_tiny_profile_service_v1_person_service_proto_msgTypes = make([]protoimpl.MessageInfo, 7)
+var file_tiny_profile_service_v1_person_service_proto_goTypes = []any{
+	(*PersonFindRequest)(nil),             // 0: profile.service.PersonFindRequest
+	(*PersonFindByExternalIDRequest)(nil), // 1: profile.service.PersonFindByExternalIDRequest
+	(*PersonListRequest)(nil),             // 2: profile.service.PersonListRequest
+	(*PersonSaveRequest)(nil),             // 3: profile.service.PersonSaveRequest
+	(*PersonDeleteRequest)(nil),           // 4: profile.service.PersonDeleteRequest
+	(*PersonInstanceResponse)(nil),        // 5: profile.service.PersonInstanceResponse
+	(*PersonInstancesResponse)(nil),       // 6: profile.service.PersonInstancesResponse
+	(*Person)(nil),                        // 7: profile.service.Person
+	(*emptypb.Empty)(nil),                 // 8: google.protobuf.Empty
+}
 var file_tiny_profile_service_v1_person_service_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	7, // 0: profile.service.PersonSaveRequest.instances:type_name -> profile.service.Person
+	7, // 1: profile.service.PersonInstanceResponse.person:type_name -> profile.service.Person
+	7, // 2: profile.service.PersonInstancesResponse.instances:type_name -> profile.service.Person
+	0, // 3: profile.service.PersonService.Find:input_type -> profile.service.PersonFindRequest
+	1, // 4: profile.service.PersonService.FindByExternalID:input_type -> profile.service.PersonFindByExternalIDRequest
+	2, // 5: profile.service.PersonService.List:input_type -> profile.service.PersonListRequest
+	3, // 6: profile.service.PersonService.Save:input_type -> profile.service.PersonSaveRequest
+	4, // 7: profile.service.PersonService.Delete:input_type -> profile.service.PersonDeleteRequest
+	5, // 8: profile.service.PersonService.Find:output_type -> profile.service.PersonInstanceResponse
+	5, // 9: profile.service.PersonService.FindByExternalID:output_type -> profile.service.PersonInstanceResponse
+	6, // 10: profile.service.PersonService.List:output_type -> profile.service.PersonInstancesResponse
+	5, // 11: profile.service.PersonService.Save:output_type -> profile.service.PersonInstanceResponse
+	8, // 12: profile.service.PersonService.Delete:output_type -> google.protobuf.Empty
+	8, // [8:13] is the sub-list for method output_type
+	3, // [3:8] is the sub-list for method input_type
+	3, // [3:3] is the sub-list for extension type_name
+	3, // [3:3] is the sub-list for extension extendee
+	0, // [0:3] is the sub-list for field type_name
 }
 
 func init() { file_tiny_profile_service_v1_person_service_proto_init() }
@@ -40,18 +685,20 @@ func file_tiny_profile_service_v1_person_service_proto_init() {
 	if File_tiny_profile_service_v1_person_service_proto != nil {
 		return
 	}
+	file_tiny_profile_service_v1_messages_proto_init()
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tiny_profile_service_v1_person_service_proto_rawDesc), len(file_tiny_profile_service_v1_person_service_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   0,
+			NumMessages:   7,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_tiny_profile_service_v1_person_service_proto_goTypes,
 		DependencyIndexes: file_tiny_profile_service_v1_person_service_proto_depIdxs,
+		MessageInfos:      file_tiny_profile_service_v1_person_service_proto_msgTypes,
 	}.Build()
 	File_tiny_profile_service_v1_person_service_proto = out.File
 	file_tiny_profile_service_v1_person_service_proto_goTypes = nil

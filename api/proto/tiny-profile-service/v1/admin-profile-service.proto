@@ -1,0 +1,63 @@
+edition = "2023";
+
+package profile.service;
+
+option go_package = "tiny-profile-service/grpc/tiny-profile-service";
+
+import "google/protobuf/empty.proto";
+import "tiny-profile-service/v1/messages.proto";
+
+service AdminProfileService {
+  rpc Find(AdminProfileFindRequest) returns (AdminProfileInstanceResponse);
+
+  rpc List(AdminProfileListRequest) returns (AdminProfileInstancesByPersonsResponse);
+
+  rpc Save(AdminProfileSaveRequest) returns (AdminProfileInstanceResponse);
+
+  rpc Delete(AdminProfileDeleteRequest) returns (google.protobuf.Empty);
+
+  rpc Remove(AdminProfileRemoveRequest) returns (google.protobuf.Empty);
+}
+
+message AdminProfileFindRequest {
+  string id = 1;
+}
+
+message AdminProfileListRequest {
+  uint32 offset = 1;
+  uint32 limit = 2;
+}
+
+message AdminProfileSaveRequest {
+  string person_id = 1;
+  profile.service.Profile instance = 2;
+}
+
+message AdminProfileDeleteRequest {
+  string id = 1;
+}
+
+message AdminProfileRemoveRequest {
+  string id = 1;
+}
+
+message AdminProfileInstanceResponse {
+  profile.service.Profile instance = 1;
+}
+
+message AdminProfileInstancesResponse {
+  uint32 offset = 1;
+  uint32 limit = 2;
+  repeated profile.service.Profile instances = 3;
+}
+
+message AdminProfileInstancesByPerson {
+  string person_id = 1;
+  repeated profile.service.Profile instances = 2;
+}
+
+message AdminProfileInstancesByPersonsResponse {
+  uint32 offset = 1;
+  uint32 limit = 2;
+  repeated AdminProfileInstancesByPerson instances = 3;
+}

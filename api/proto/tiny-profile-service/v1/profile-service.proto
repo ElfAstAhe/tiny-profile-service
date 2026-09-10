@@ -15,6 +15,10 @@ service ProfileService {
   rpc List(ProfileListRequest) returns (ProfileInstancesResponse);
   rpc ListAll(ProfileListAllRequest) returns (ProfileInstancesResponse);
   rpc ListAllByPersons(ProfileListAllByPersonsRequest) returns (ProfileListAllByPersonsResponse);
+
+  rpc Save(ProfileSaveRequest) returns (ProfileInstanceResponse);
+
+  rpc Delete(ProfileDeleteRequest) returns (google.protobuf.Empty);
 }
 
 message ProfileFindRequest {
@@ -42,6 +46,16 @@ message ProfileListAllRequest {
 
 message ProfileListAllByPersonsRequest {
   repeated string person_id = 1;
+}
+
+message ProfileSaveRequest {
+  string person_id = 1;
+  profile.service.Profile instance = 2;
+}
+
+message ProfileDeleteRequest {
+  string person_id = 1;
+  string id = 2;
 }
 
 message ProfileInstanceResponse {

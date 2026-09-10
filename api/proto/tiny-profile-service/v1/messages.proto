@@ -82,3 +82,8 @@ message Person {
   // Profiles — список связанных профилей сотрудника во внешних сервисах.
   repeated Profile profiles = 15;
 }
+
+message ProfileBundle {
+  Profile profile = 1;
+  Person person = 2;
+}

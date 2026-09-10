@@ -828,6 +828,99 @@ func (b0 Person_builder) Build() *Person {
 	return m0
 }
 
+type ProfileBundle struct {
+	state              protoimpl.MessageState `protogen:"opaque.v1"`
+	xxx_hidden_Profile *Profile               `protobuf:"bytes,1,opt,name=profile"`
+	xxx_hidden_Person  *Person                `protobuf:"bytes,2,opt,name=person"`
+	unknownFields      protoimpl.UnknownFields
+	sizeCache          protoimpl.SizeCache
+}
+
+func (x *ProfileBundle) Reset() {
+	*x = ProfileBundle{}
+	mi := &file_tiny_profile_service_v1_messages_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *ProfileBundle) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*ProfileBundle) ProtoMessage() {}
+
+func (x *ProfileBundle) ProtoReflect() protoreflect.Message {
+	mi := &file_tiny_profile_service_v1_messages_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+func (x *ProfileBundle) GetProfile() *Profile {
+	if x != nil {
+		return x.xxx_hidden_Profile
+	}
+	return nil
+}
+
+func (x *ProfileBundle) GetPerson() *Person {
+	if x != nil {
+		return x.xxx_hidden_Person
+	}
+	return nil
+}
+
+func (x *ProfileBundle) SetProfile(v *Profile) {
+	x.xxx_hidden_Profile = v
+}
+
+func (x *ProfileBundle) SetPerson(v *Person) {
+	x.xxx_hidden_Person = v
+}
+
+func (x *ProfileBundle) HasProfile() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Profile != nil
+}
+
+func (x *ProfileBundle) HasPerson() bool {
+	if x == nil {
+		return false
+	}
+	return x.xxx_hidden_Person != nil
+}
+
+func (x *ProfileBundle) ClearProfile() {
+	x.xxx_hidden_Profile = nil
+}
+
+func (x *ProfileBundle) ClearPerson() {
+	x.xxx_hidden_Person = nil
+}
+
+type ProfileBundle_builder struct {
+	_ [0]func() // Prevents comparability and use of unkeyed literals for the builder.
+
+	Profile *Profile
+	Person  *Person
+}
+
+func (b0 ProfileBundle_builder) Build() *ProfileBundle {
+	m0 := &ProfileBundle{}
+	b, x := &b0, m0
+	_, _ = b, x
+	x.xxx_hidden_Profile = b.Profile
+	x.xxx_hidden_Person = b.Person
+	return m0
+}
+
 var File_tiny_profile_service_v1_messages_proto protoreflect.FileDescriptor
 
 const file_tiny_profile_service_v1_messages_proto_rawDesc = "" +
@@ -869,26 +962,32 @@ const file_tiny_profile_service_v1_messages_proto_rawDesc = "" +
 	"created_at\x18\r \x01(\v2\x1a.google.protobuf.TimestampR\tcreatedAt\x129\n" +
 	"\n" +
 	"updated_at\x18\x0e \x01(\v2\x1a.google.protobuf.TimestampR\tupdatedAt\x124\n" +
-	"\bprofiles\x18\x0f \x03(\v2\x18.profile.service.ProfileR\bprofilesB0Z.tiny-profile-service/grpc/tiny-profile-serviceb\beditionsp\xe8\a"
+	"\bprofiles\x18\x0f \x03(\v2\x18.profile.service.ProfileR\bprofiles\"t\n" +
+	"\rProfileBundle\x122\n" +
+	"\aprofile\x18\x01 \x01(\v2\x18.profile.service.ProfileR\aprofile\x12/\n" +
+	"\x06person\x18\x02 \x01(\v2\x17.profile.service.PersonR\x06personB0Z.tiny-profile-service/grpc/tiny-profile-serviceb\beditionsp\xe8\a"
 
-var file_tiny_profile_service_v1_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_tiny_profile_service_v1_messages_proto_msgTypes = make([]protoimpl.MessageInfo, 3)
 var file_tiny_profile_service_v1_messages_proto_goTypes = []any{
 	(*Profile)(nil),               // 0: profile.service.Profile
 	(*Person)(nil),                // 1: profile.service.Person
-	(*timestamppb.Timestamp)(nil), // 2: google.protobuf.Timestamp
+	(*ProfileBundle)(nil),         // 2: profile.service.ProfileBundle
+	(*timestamppb.Timestamp)(nil), // 3: google.protobuf.Timestamp
 }
 var file_tiny_profile_service_v1_messages_proto_depIdxs = []int32{
-	2, // 0: profile.service.Profile.created_at:type_name -> google.protobuf.Timestamp
-	2, // 1: profile.service.Profile.updated_at:type_name -> google.protobuf.Timestamp
-	2, // 2: profile.service.Person.birth_day:type_name -> google.protobuf.Timestamp
-	2, // 3: profile.service.Person.created_at:type_name -> google.protobuf.Timestamp
-	2, // 4: profile.service.Person.updated_at:type_name -> google.protobuf.Timestamp
+	3, // 0: profile.service.Profile.created_at:type_name -> google.protobuf.Timestamp
+	3, // 1: profile.service.Profile.updated_at:type_name -> google.protobuf.Timestamp
+	3, // 2: profile.service.Person.birth_day:type_name -> google.protobuf.Timestamp
+	3, // 3: profile.service.Person.created_at:type_name -> google.protobuf.Timestamp
+	3, // 4: profile.service.Person.updated_at:type_name -> google.protobuf.Timestamp
 	0, // 5: profile.service.Person.profiles:type_name -> profile.service.Profile
-	6, // [6:6] is the sub-list for method output_type
-	6, // [6:6] is the sub-list for method input_type
-	6, // [6:6] is the sub-list for extension type_name
-	6, // [6:6] is the sub-list for extension extendee
-	0, // [0:6] is the sub-list for field type_name
+	0, // 6: profile.service.ProfileBundle.profile:type_name -> profile.service.Profile
+	1, // 7: profile.service.ProfileBundle.person:type_name -> profile.service.Person
+	8, // [8:8] is the sub-list for method output_type
+	8, // [8:8] is the sub-list for method input_type
+	8, // [8:8] is the sub-list for extension type_name
+	8, // [8:8] is the sub-list for extension extendee
+	0, // [0:8] is the sub-list for field type_name
 }
 
 func init() { file_tiny_profile_service_v1_messages_proto_init() }
@@ -902,7 +1001,7 @@ func file_tiny_profile_service_v1_messages_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_tiny_profile_service_v1_messages_proto_rawDesc), len(file_tiny_profile_service_v1_messages_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   3,
 			NumExtensions: 0,
 			NumServices:   0,
 		},

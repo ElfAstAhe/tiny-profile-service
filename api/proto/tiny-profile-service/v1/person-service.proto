@@ -3,3 +3,48 @@ edition = "2023";
 package profile.service;
 
 option go_package = "tiny-profile-service/grpc/tiny-profile-service";
+
+import "google/protobuf/empty.proto";
+import "tiny-profile-service/v1/messages.proto";
+
+service PersonService {
+  rpc Find(PersonFindRequest) returns (PersonInstanceResponse);
+  rpc FindByExternalID(PersonFindByExternalIDRequest) returns (PersonInstanceResponse);
+
+  rpc List(PersonListRequest) returns (PersonInstancesResponse);
+
+  rpc Save(PersonSaveRequest) returns (PersonInstanceResponse);
+
+  rpc Delete(PersonDeleteRequest) returns (google.protobuf.Empty);
+}
+
+message PersonFindRequest {
+  string id = 1;
+}
+
+message PersonFindByExternalIDRequest {
+  string external_id = 1;
+}
+
+message PersonListRequest {
+  uint32 offset = 1;
+  uint32 limit = 2;
+}
+
+message PersonSaveRequest {
+  profile.service.Person instances = 1;
+}
+
+message PersonDeleteRequest {
+  string id = 1;
+}
+
+message PersonInstanceResponse {
+  profile.service.Person person = 1;
+}
+
+message PersonInstancesResponse {
+  uint32 offset = 1;
+  uint32 limit = 2;
+  repeated profile.service.Person instances = 3;
+}
