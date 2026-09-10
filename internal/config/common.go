@@ -1,7 +1,7 @@
 package config
 
 const (
-	ApplicationName = "tiny-profile-service"
+	ApplicationName = "tiny-profile-service.proto"
 )
 
 // FlagConfig - файл конфигурации

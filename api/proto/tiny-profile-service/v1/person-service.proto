@@ -1,0 +1,5 @@
+edition = "2023";
+
+package profile.service;
+
+option go_package = "tiny-profile-service/grpc/tiny-profile-service";

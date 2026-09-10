@@ -1,0 +1,64 @@
+edition = "2023";
+
+package profile.service;
+
+option go_package = "tiny-profile-service/grpc/tiny-profile-service";
+
+import "google/protobuf/empty.proto";
+import "tiny-profile-service/v1/messages.proto";
+
+service ProfileService {
+  rpc Find(ProfileFindRequest) returns (ProfileInstanceResponse);
+  rpc FindByID(ProfileFindByIDRequest) returns (ProfileInstanceResponse);
+  rpc FindByUserID(ProfileFindByUserIDRequest) returns (ProfileInstanceResponse);
+
+  rpc List(ProfileListRequest) returns (ProfileInstancesResponse);
+  rpc ListAll(ProfileListAllRequest) returns (ProfileInstancesResponse);
+  rpc ListAllByPersons(ProfileListAllByPersonsRequest) returns (ProfileListAllByPersonsResponse);
+}
+
+message ProfileFindRequest {
+  string person_id = 1;
+  string id = 2;
+}
+
+message ProfileFindByIDRequest {
+  string id = 1;
+}
+
+message ProfileFindByUserIDRequest {
+  string user_id = 1;
+}
+
+message ProfileListRequest {
+  string person_id = 1;
+  uint32 offset = 2;
+  uint32 limit = 3;
+}
+
+message ProfileListAllRequest {
+  string person_id = 1;
+}
+
+message ProfileListAllByPersonsRequest {
+  repeated string person_id = 1;
+}
+
+message ProfileInstanceResponse {
+  profile.service.Profile instance = 1;
+}
+
+message ProfileInstancesResponse {
+  uint32 offset = 1;
+  uint32 limit = 2;
+  repeated profile.service.Profile instances = 3;
+}
+
+message ProfilesByPerson {
+  string person_id = 1;
+  repeated profile.service.Profile profiles = 2;
+}
+
+message ProfileListAllByPersonsResponse {
+  repeated ProfilesByPerson profileBundle = 1;
+}

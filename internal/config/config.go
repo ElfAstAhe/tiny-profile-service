@@ -11,14 +11,16 @@ import (
 
 // Config micro-service configuration
 type Config struct {
-	App           *AppConfig                `mapstructure:"app" json:"app,omitempty" yaml:"app,omitempty"`
-	Auth          *conf.AuthConfig          `mapstructure:"auth" json:"auth,omitempty" yaml:"auth,omitempty"`
-	HTTP          *conf.HTTPConfig          `mapstructure:"http" json:"http,omitempty" yaml:"http,omitempty"`
-	GRPC          *conf.GRPCConfig          `mapstructure:"grpc" json:"grpc,omitempty" yaml:"grpc,omitempty"`
-	Log           *conf.LogConfig           `mapstructure:"log" json:"log,omitempty" yaml:"log,omitempty"`
-	DB            *conf.DBConfig            `mapstructure:"db" json:"db,omitempty" yaml:"db,omitempty"`
-	Telemetry     *conf.TelemetryConfig     `mapstructure:"telemetry" json:"telemetry,omitempty" yaml:"telemetry,omitempty"`
-	AMQPConnector *conf.AMQPConnectorConfig `mapstructure:"amqp_connector" json:"amqp_connector,omitempty" yaml:"amqp_connector,omitempty"`
+	App             *AppConfig                `mapstructure:"app" json:"app,omitempty" yaml:"app,omitempty"`
+	Credentials     *ServiceCredentialsConfig `mapstructure:"svc_creds" json:"svc_creds,omitempty" yaml:"svc_creds,omitempty"`
+	DataAuditClient *AuditClientConfig        `mapstructure:"data_audit_client" json:"data_audit_client,omitempty" yaml:"data_audit_client,omitempty"`
+	Auth            *conf.AuthConfig          `mapstructure:"auth" json:"auth,omitempty" yaml:"auth,omitempty"`
+	HTTP            *conf.HTTPConfig          `mapstructure:"http" json:"http,omitempty" yaml:"http,omitempty"`
+	GRPC            *conf.GRPCConfig          `mapstructure:"grpc" json:"grpc,omitempty" yaml:"grpc,omitempty"`
+	Log             *conf.LogConfig           `mapstructure:"log" json:"log,omitempty" yaml:"log,omitempty"`
+	DB              *conf.DBConfig            `mapstructure:"db" json:"db,omitempty" yaml:"db,omitempty"`
+	Telemetry       *conf.TelemetryConfig     `mapstructure:"telemetry" json:"telemetry,omitempty" yaml:"telemetry,omitempty"`
+	AMQPConnector   *conf.AMQPConnectorConfig `mapstructure:"amqp_connector" json:"amqp_connector,omitempty" yaml:"amqp_connector,omitempty"`
 }
 
 // linker params
@@ -30,6 +32,8 @@ var (
 
 func NewConfig(
 	app *AppConfig,
+	svcCreds *ServiceCredentialsConfig,
+	dataAuditClient *AuditClientConfig,
 	auth *conf.AuthConfig,
 	HTTP *conf.HTTPConfig,
 	GRPC *conf.GRPCConfig,
@@ -39,20 +43,24 @@ func NewConfig(
 	amqpConnector *conf.AMQPConnectorConfig,
 ) *Config {
 	return &Config{
-		App:           app,
-		Auth:          auth,
-		HTTP:          HTTP,
-		GRPC:          GRPC,
-		Log:           log,
-		DB:            db,
-		Telemetry:     telemetry,
-		AMQPConnector: amqpConnector,
+		App:             app,
+		Credentials:     svcCreds,
+		DataAuditClient: dataAuditClient,
+		Auth:            auth,
+		HTTP:            HTTP,
+		GRPC:            GRPC,
+		Log:             log,
+		DB:              db,
+		Telemetry:       telemetry,
+		AMQPConnector:   amqpConnector,
 	}
 }
 
 func NewDefaultConfig() *Config {
 	return NewConfig(
 		NewDefaultAppConfig(),
+		NewDefaultServiceCredentialsConfig(),
+		NewDefaultAuditClientConfig(),
 		conf.NewDefaultAuthConfig(),
 		conf.NewDefaultHTTPConfig(),
 		conf.NewDefaultGRPCConfig(),
@@ -65,14 +73,16 @@ func NewDefaultConfig() *Config {
 
 func NewEmptyConfig() *Config {
 	return &Config{
-		App:           &AppConfig{},
-		Auth:          &conf.AuthConfig{},
-		HTTP:          &conf.HTTPConfig{},
-		GRPC:          &conf.GRPCConfig{},
-		Log:           &conf.LogConfig{},
-		DB:            &conf.DBConfig{},
-		Telemetry:     &conf.TelemetryConfig{},
-		AMQPConnector: &conf.AMQPConnectorConfig{},
+		App:             &AppConfig{},
+		Credentials:     &ServiceCredentialsConfig{},
+		DataAuditClient: &AuditClientConfig{},
+		Auth:            &conf.AuthConfig{},
+		HTTP:            &conf.HTTPConfig{},
+		GRPC:            &conf.GRPCConfig{},
+		Log:             &conf.LogConfig{},
+		DB:              &conf.DBConfig{},
+		Telemetry:       &conf.TelemetryConfig{},
+		AMQPConnector:   &conf.AMQPConnectorConfig{},
 	}
 }
 
@@ -81,6 +91,8 @@ func (c *Config) Validate() error {
 		Validate() error
 	}{
 		c.App,
+		c.Credentials,
+		c.DataAuditClient,
 		c.Auth,
 		c.HTTP,
 		c.GRPC,

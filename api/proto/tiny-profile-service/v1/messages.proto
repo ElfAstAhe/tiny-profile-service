@@ -1,0 +1,84 @@
+edition = "2023";
+
+package profile.service;
+
+option go_package = "tiny-profile-service/grpc/tiny-profile-service";
+
+import "google/protobuf/timestamp.proto";
+
+// Profile содержит региональные настройки и метаданные пользователя.
+// Этот объект используется для локализации интерфейса и отправки пушей с учетом таймзоны.
+message Profile {
+  // Уникальный идентификатор профиля (UUIDv7).
+  string id = 1;
+
+  // Идентификатор владельца профиля из сервиса авторизации.
+  string user_id = 2;
+
+  // Часовой пояс пользователя в формате IANA (например, "Europe/Moscow").
+  string time_zone = 3;
+
+  // Двухбуквенный код языка в формате ISO 639-1 (например, "ru", "en").
+  string lang = 4;
+
+  // Флаг активности аккаунта. Если false, пользователь временно заблокирован.
+  bool active = 5;
+
+  // Флаг "мягкого" удаления. Истинен, если профиль удалён
+  bool deleted = 6;
+
+  // Время создания профиля в системе.
+  google.protobuf.Timestamp created_at = 7;
+
+  // Время последнего изменения любых данных профиля.
+  google.protobuf.Timestamp updated_at = 8;
+}
+
+// Person представляет сотрудника компании со всеми персональными
+// данными, рабочим статусом и привязанными профилями.
+message Person {
+  // Id — уникальный идентификатор профиля (UUIDv7).
+  string id = 1;
+
+  // ExternalId — уникальный идентификатор сотрудника из внешней системы.
+  string external_id = 2;
+
+  // LastName — фамилия сотрудника.
+  string last_name = 3;
+
+  // FirstName — имя сотрудника.
+  string first_name = 4;
+
+  // Patronymic — отчество сотрудника.
+  string patronymic = 5;
+
+  // BirthDay — дата рождения сотрудника (время сбрасывается в 00:00:00 UTC).
+  google.protobuf.Timestamp birth_day = 6;
+
+  // Department — департамент или отдел, к которому привязан сотрудник.
+  string department = 7;
+
+  // Position — текущая должность сотрудника.
+  string position = 8;
+
+  // Status — рабочий статус (например, "active", "on_vacation", "fired").
+  string status = 9;
+
+  // AvatarUrl — прямая ссылка на аватар или фотографию сотрудника.
+  string avatar_url = 10;
+
+  // Active — флаг активности аккаунта. Если false, пользователь временно заблокирован.
+  bool active = 11;
+
+  // Deleted — флаг "мягкого" удаления. Истинен, если сотрудник удалён.
+  bool deleted = 12;
+
+  // CreatedAt — время создания профиля в системе.
+  google.protobuf.Timestamp created_at = 13;
+
+  // UpdatedAt — время последнего изменения любых данных профиля.
+  google.protobuf.Timestamp updated_at = 14;
+
+  // Profiles — список связанных профилей сотрудника во внешних сервисах.
+  repeated Profile profiles = 15;
+}

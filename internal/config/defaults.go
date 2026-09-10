@@ -1,6 +1,8 @@
 package config
 
 import (
+	"time"
+
 	conf "github.com/ElfAstAhe/go-service-template/pkg/config"
 	"github.com/spf13/viper"
 )
@@ -17,6 +19,21 @@ const (
 const (
 	defaultAMQPConnectorUsername string = "svc-profile"
 	defaultAMQPConnectorPassword string = "test"
+)
+
+// creds
+const (
+	defaultCredsScheduleInterval      time.Duration = 5 * time.Minute
+	defaultCredsErrorScheduleInterval time.Duration = 3 * time.Second
+)
+
+// audit client
+const (
+	defaultAuditClientTimeout            time.Duration = 5 * time.Second
+	defaultAuditClientWorkerCount        int           = 4
+	defaultAuditClientDataCapacity       int           = 10000
+	defaultAuditClientCompleteProcessing bool          = true
+	defaultAuditClientShutdownTimeout    time.Duration = 15 * time.Second
 )
 
 //goland:noinspection DuplicatedCode
@@ -73,4 +90,13 @@ func applyDefaults(v *viper.Viper) {
 	v.SetDefault(keyAMQPConnectorWriteTimeout, conf.DefaultAMQPConnectorWriteTimeout)
 	v.SetDefault(keyAMQPConnectorIdleTimeout, conf.DefaultAMQPConnectorIdleTimeout)
 	v.SetDefault(keyAMQPConnectorShutdownTimeout, conf.DefaultAMQPConnectorShutdownTimeout)
+	// data-audit-client
+	v.SetDefault(keyDataAuditClientTimeout, defaultAuditClientTimeout)
+	v.SetDefault(keyDataAuditClientWorkerCount, defaultAuditClientWorkerCount)
+	v.SetDefault(keyDataAuditClientDataCapacity, defaultAuditClientDataCapacity)
+	v.SetDefault(keyDataAuditClientCompleteProcessing, defaultAuditClientCompleteProcessing)
+	v.SetDefault(keyDataAuditClientShutdownTimeout, defaultAuditClientShutdownTimeout)
+	// creds
+	v.SetDefault(keySvcCredsScheduleInterval, defaultCredsScheduleInterval)
+	v.SetDefault(keySvcCredsErrorScheduleInterval, defaultCredsErrorScheduleInterval)
 }
