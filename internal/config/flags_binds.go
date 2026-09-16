@@ -71,6 +71,18 @@ func bindFlags(flags *pflag.FlagSet, v *viper.Viper) error {
 		v.BindPFlag(keyAMQPConnectorWriteTimeout, flags.Lookup(FlagAMQPConnectorWriteTimeout)),
 		v.BindPFlag(keyAMQPConnectorIdleTimeout, flags.Lookup(FlagAMQPConnectorIdleTimeout)),
 		v.BindPFlag(keyAMQPConnectorShutdownTimeout, flags.Lookup(FlagAMQPConnectorShutdownTimeout)),
+		// data-audit-client
+		v.BindPFlag(keyDataAuditClientBaseURL, flags.Lookup(FlagDataAuditClientBaseURL)),
+		v.BindPFlag(keyDataAuditClientTimeout, flags.Lookup(FlagDataAuditClientTimeout)),
+		v.BindPFlag(keyDataAuditClientWorkerCount, flags.Lookup(FlagDataAuditClientWorkerCount)),
+		v.BindPFlag(keyDataAuditClientDataCapacity, flags.Lookup(FlagDataAuditClientDataCapacity)),
+		v.BindPFlag(keyDataAuditClientCompleteProcessing, flags.Lookup(FlagDataAuditClientCompleteProcessing)),
+		v.BindPFlag(keyDataAuditClientShutdownTimeout, flags.Lookup(FlagDataAuditClientShutdownTimeout)),
+		// svc-creds
+		v.BindPFlag(keySvcCredsUsername, flags.Lookup(FlagCredsUsername)),
+		v.BindPFlag(keySvcCredsPassword, flags.Lookup(FlagCredsPassword)),
+		v.BindPFlag(keySvcCredsScheduleInterval, flags.Lookup(FlagCredsScheduleInterval)),
+		v.BindPFlag(keySvcCredsErrorScheduleInterval, flags.Lookup(FlagCredsErrorScheduleInterval)),
 	)
 	if err != nil {
 		return errs.NewConfigError("bind flags with keys", err)

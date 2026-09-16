@@ -1,0 +1,15 @@
+basePath: /
+info:
+  contact:
+    email: elf.ast.ahe@gmail.com
+    name: API Support
+    url: https://github.com/ElfAstAhe/tiny-profile-service
+  description: User profiles service
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org
+  termsOfService: Free use
+  title: Profile Service API
+  version: "1.0"
+paths: {}
+swagger: "2.0"

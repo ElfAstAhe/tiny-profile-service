@@ -1,4 +1,4 @@
-package tiny_profile_service
+package profile
 
 const (
 	sqlCreateTableProfiles string = `

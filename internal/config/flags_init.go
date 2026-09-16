@@ -88,6 +88,18 @@ func initFLags() (res *pflag.FlagSet, err error) {
 		res.Duration(FlagAMQPConnectorIdleTimeout, conf.DefaultAMQPConnectorIdleTimeout, "amqp connector idle timeout")
 		res.Duration(FlagAMQPConnectorWriteTimeout, conf.DefaultAMQPConnectorWriteTimeout, "amqp connector write timeout")
 		res.Duration(FlagAMQPConnectorShutdownTimeout, conf.DefaultAMQPConnectorShutdownTimeout, "amqp connector shutdown timeout")
+		// svc-creds
+		res.String(FlagCredsUsername, "", "client token refresher username")
+		res.String(FlagCredsPassword, "", "client token refresher password")
+		res.Duration(FlagCredsScheduleInterval, defaultCredsScheduleInterval, "client token refresher schedule interval")
+		res.Duration(FlagCredsErrorScheduleInterval, defaultCredsErrorScheduleInterval, "client token refresher error schedule interval")
+		// data-audit-client
+		res.String(FlagDataAuditClientBaseURL, "", "data audit service base url")
+		res.Duration(FlagDataAuditClientTimeout, defaultDataAuditClientTimeout, "data audit client timeout")
+		res.Int(FlagDataAuditClientWorkerCount, defaultDataAuditClientWorkerCount, "data audit client worker count")
+		res.Int(FlagDataAuditClientDataCapacity, defaultDataAuditClientDataCapacity, "data audit client data capacity")
+		res.Bool(FlagDataAuditClientCompleteProcessing, true, "data audit client complete processing")
+		res.Duration(FlagDataAuditClientShutdownTimeout, defaultDataAuditClientShutdownTimeout, "data audit client shutdown timeout")
 	}
 
 	// Парсинг

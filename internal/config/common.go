@@ -90,6 +90,24 @@ const (
 	FlagAMQPConnectorShutdownTimeout string = "amqp-connector-shutdown-timeout"
 )
 
+// Data-audit-client
+const (
+	FlagDataAuditClientBaseURL            string = "data-audit-client-base-url"
+	FlagDataAuditClientTimeout            string = "data-audit-client-timeout"
+	FlagDataAuditClientWorkerCount        string = "data-audit-client-worker-count"
+	FlagDataAuditClientDataCapacity       string = "data-audit-client-data-capacity"
+	FlagDataAuditClientCompleteProcessing string = "data-audit-client-complete-processing"
+	FlagDataAuditClientShutdownTimeout    string = "data-audit-client-shutdown-timeout"
+)
+
+// Creds
+const (
+	FlagCredsUsername              string = "svc-creds-username"
+	FlagCredsPassword              string = "svc-creds-password"
+	FlagCredsScheduleInterval      string = "svc-creds-schedule-interval"
+	FlagCredsErrorScheduleInterval string = "svc-creds-error-schedule-interval"
+)
+
 // app
 const (
 	keyAppNodeName           string = "app.node_name"
@@ -108,4 +126,22 @@ const (
 	keyAMQPConnectorWriteTimeout    string = "amqp_connector.write_timeout"
 	keyAMQPConnectorIdleTimeout     string = "amqp_connector.idle_timeout"
 	keyAMQPConnectorShutdownTimeout string = "amqp_connector.shutdown_timeout"
+)
+
+// data audit client
+const (
+	keyDataAuditClientBaseURL            string = "data_audit_client.base_url"
+	keyDataAuditClientTimeout            string = "data_audit_client.timeout"
+	keyDataAuditClientWorkerCount        string = "data_audit_client.worker_count"
+	keyDataAuditClientDataCapacity       string = "data_audit_client.data_capacity"
+	keyDataAuditClientCompleteProcessing string = "data_audit_client.complete_processing"
+	keyDataAuditClientShutdownTimeout    string = "data_audit_client.shutdown_timeout"
+)
+
+// service credentials
+const (
+	keySvcCredsUsername              string = "svc_creds.username"
+	keySvcCredsPassword              string = "svc_creds.password"
+	keySvcCredsScheduleInterval      string = "svc_creds.schedule_interval"
+	keySvcCredsErrorScheduleInterval string = "svc_creds.error_schedule_interval"
 )

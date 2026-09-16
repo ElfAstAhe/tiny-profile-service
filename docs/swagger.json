@@ -1,0 +1,20 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "User profiles service",
+        "title": "Profile Service API",
+        "termsOfService": "Free use",
+        "contact": {
+            "name": "API Support",
+            "url": "https://github.com/ElfAstAhe/tiny-profile-service",
+            "email": "elf.ast.ahe@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org"
+        },
+        "version": "1.0"
+    },
+    "basePath": "/",
+    "paths": {}
+}
