@@ -10,7 +10,7 @@ import (
 	"github.com/ElfAstAhe/go-service-template/pkg/migration/goose"
 	"github.com/ElfAstAhe/tiny-profile-service/internal/config"
 	"github.com/ElfAstAhe/tiny-profile-service/internal/repository/postgres"
-	_ "github.com/ElfAstAhe/tiny-profile-service/migrations/tiny-profile-service"
+	_ "github.com/ElfAstAhe/tiny-profile-service/migrations/profile"
 )
 
 func (pc *PgContainer) providerDB() (any, error) {
